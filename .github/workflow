@@ -1,0 +1,22 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Install Helm and make it available in the PATH
+      - name: Install Helm
+        uses: actions/setup-helm@v3
+
+      # Lint the chart using Helm
+      - name: Lint chart
+        run: |
+          helm lint .
+
+      # Run unit tests (replace with your own test command)
+      - name: Run unit tests
+        run: |
+          make test
