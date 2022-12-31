@@ -14,8 +14,7 @@ jobs:
       # Lint the chart using Helm
       - name: Lint chart
         run: |
-          pwd
-          ls -la
+          cat ../Chart.yaml
           helm version
 
       # Run unit tests (replace with your own test command)
