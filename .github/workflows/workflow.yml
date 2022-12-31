@@ -1,0 +1,31 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Install Helm and make it available in the PATH
+      - name: Install Helm
+        uses: azure/setup-helm@v3
+
+      # Lint the chart using Helm
+      - name: Lint chart
+        run: |
+          helm lint .
+
+      # Run unit tests (replace with your own test command)
+      - name: Run unit tests
+        run: |
+          make test
+
+      # Publish the chart to Artifactory (replace with your own Artifactory credentials and repository)
+      - name: Publish chart to Artifactory
+        env:
+          ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+          ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
+        run: |
+          helm plugin install https://github.com/chartmuseum/helm-push
+          helm push . "https://my-artifactory-server/helm-local"
