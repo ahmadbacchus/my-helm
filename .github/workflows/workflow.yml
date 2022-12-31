@@ -9,7 +9,7 @@ jobs:
     steps:
       # Install Helm and make it available in the PATH
       - name: Install Helm
-        uses: actions/setup-helm@v3
+        uses: azure/setup-helm@v3
 
       # Lint the chart using Helm
       - name: Lint chart
