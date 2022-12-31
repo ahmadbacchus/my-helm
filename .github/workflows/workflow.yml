@@ -16,7 +16,7 @@ jobs:
         run: |
           pwd
           ls -la
-          helm --version
+          helm version
 
       # Run unit tests (replace with your own test command)
       - name: Run unit tests
