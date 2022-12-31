@@ -15,7 +15,7 @@ jobs:
       - name: Lint chart
         run: |
           pwd
-          ls
+          ls -la
           helm lint .
 
       # Run unit tests (replace with your own test command)
