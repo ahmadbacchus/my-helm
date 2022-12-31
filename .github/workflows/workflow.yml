@@ -10,7 +10,10 @@ jobs:
       # Install Helm and make it available in the PATH
       - name: Install Helm
         uses: azure/setup-helm@v3
-
+        
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      
       # Lint the chart using Helm
       - name: Lint chart
         run: |
